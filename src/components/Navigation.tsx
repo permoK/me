@@ -14,91 +14,97 @@ const slideLabels = ['Home', 'About', 'Work', 'Skills', 'Contact'];
 export default function Navigation({ currentSlide, totalSlides, onSlideChange }: NavigationProps) {
   return (
     <>
-      {/* Top Navigation Bar */}
+      {/* Desktop Navigation Bar */}
       <motion.nav
-        className="fixed top-0 left-0 right-0 z-[100] bg-black/90 backdrop-blur-md border-b border-white/10"
+        className="fixed top-12 left-1/2 w-[60vw] transform -translate-x-1/2 z-[100] hidden sm:block"
         variants={fadeIn}
         initial="initial"
         animate="animate"
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-          <div className="flex items-center justify-between">
-            {/* Logo/Brand */}
-            <motion.div
-              className="text-white font-light text-lg sm:text-xl tracking-widest"
-              whileHover={{ scale: 1.05 }}
-            >
-              ALEX CHEN
-            </motion.div>
+        <div
+          className="bg-black/20 backdrop-blur-md border border-white/10 rounded-full shadow-lg"
+          style={{
+            padding: '1rem 3rem',
+            minWidth: '800px'
+          }}
+        >
+          <div className="flex items-center justify-between" style={{ height: '3rem' }}>
+            {/* Logo/Brand - Left Side */}
+            <div style={{ marginRight: '4rem' }}>
+              <motion.div
+                className="text-white font-light tracking-widest"
+                whileHover={{ scale: 1.05 }}
+              >
+                ALEX CHEN
+              </motion.div>
+            </div>
 
-            {/* Navigation Menu - Desktop */}
-            <div className="hidden lg:flex items-center space-x-8 xl:space-x-12">
+            {/* Navigation Menu */}
+            <div className="flex items-center" style={{ gap: '3rem' }}>
               {slideLabels.map((label, index) => (
                 <motion.button
                   key={index}
                   onClick={() => onSlideChange(index)}
-                  className={`relative text-sm font-light tracking-wider transition-all duration-300 ${
-                    currentSlide === index
-                      ? 'text-white'
-                      : 'text-white/80 hover:text-white'
-                  }`}
-                  whileHover={{ y: -2 }}
+                  className={`relative text-sm font-medium tracking-wide transition-all duration-300 rounded-full ${currentSlide === index
+                    ? 'text-white bg-white/10'
+                    : 'text-white/80 hover:text-white hover:bg-white/5'
+                    }`}
+                  style={{
+                    padding: '0.75rem .75rem'
+                  }}
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {label.toUpperCase()}
+                  {label}
 
                   {/* Active indicator */}
                   {currentSlide === index && (
                     <motion.div
-                      className="absolute -bottom-2 left-0 right-0 h-px bg-white"
+                      className="absolute w-1 h-1 bg-white rounded-full"
+                      style={{
+                        bottom: '-0.25rem',
+                        left: '50%',
+                        transform: 'translateX(-50%)'
+                      }}
                       layoutId="activeIndicator"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
                       transition={{ duration: 0.3 }}
                     />
                   )}
                 </motion.button>
               ))}
             </div>
-
-            {/* Mobile Current Section Display */}
-            <div className="lg:hidden flex items-center space-x-3">
-              <span className="text-white/90 text-sm font-light">
-                {slideLabels[currentSlide].toUpperCase()}
-              </span>
-              <div className="text-white/70 text-xs font-mono">
-                {String(currentSlide + 1).padStart(2, '0')}/{String(totalSlides).padStart(2, '0')}
-              </div>
-            </div>
           </div>
         </div>
       </motion.nav>
 
-      {/* Side Progress Indicator - Desktop Only */}
+
+
+      {/* Mobile Navigation */}
       <motion.div
-        className="fixed right-4 sm:right-6 lg:right-8 top-1/2 transform -translate-y-1/2 z-[90] hidden sm:block"
+        className="fixed top-8 left-1/2 transform -translate-x-1/2 z-[100] sm:hidden"
         variants={fadeIn}
         initial="initial"
         animate="animate"
       >
-        <div className="flex flex-col items-center space-y-4">
-          {/* Progress Line */}
-          <div className="relative w-px h-24 sm:h-32 bg-white/20">
+        <div className="bg-black/20 backdrop-blur-md border border-white/10 rounded-full px-6 py-3 shadow-lg">
+          <div className="flex items-center justify-between h-8 min-w-[280px]">
+            {/* Logo/Brand - Mobile */}
             <motion.div
-              className="absolute top-0 left-0 w-full bg-white origin-top"
-              style={{ height: `${((currentSlide + 1) / totalSlides) * 100}%` }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            />
-          </div>
+              className="text-white font-light text-base tracking-widest"
+              whileHover={{ scale: 1.05 }}
+            >
+              ALEX CHEN
+            </motion.div>
 
-          {/* Current/Total Counter */}
-          <div className="text-white/80 text-xs font-mono tracking-wider">
-            <div className="text-center">
-              <div className="text-white text-sm">
-                {String(currentSlide + 1).padStart(2, '0')}
-              </div>
-              <div className="text-white/70 text-xs">
-                {String(totalSlides).padStart(2, '0')}
+            {/* Mobile Menu Indicator */}
+            <div className="flex items-center space-x-2">
+              <span className="text-white/80 text-xs font-light">
+                {slideLabels[currentSlide]}
+              </span>
+              <div className="text-white/60 text-xs font-mono">
+                {String(currentSlide + 1).padStart(2, '0')}/{String(totalSlides).padStart(2, '0')}
               </div>
             </div>
           </div>
@@ -107,59 +113,24 @@ export default function Navigation({ currentSlide, totalSlides, onSlideChange }:
 
       {/* Mobile Navigation Dots */}
       <motion.div
-        className="fixed bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-[90] sm:hidden"
+        className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-[90] sm:hidden"
         variants={fadeIn}
         initial="initial"
         animate="animate"
       >
-        <div className="flex items-center space-x-4 bg-black/70 backdrop-blur-md px-6 py-4 rounded-full border border-white/20">
+        <div className="flex items-center space-x-3 bg-black/80 backdrop-blur-md px-4 py-3 rounded-full border border-white/20">
           {Array.from({ length: totalSlides }).map((_, index) => (
             <motion.button
               key={index}
               onClick={() => onSlideChange(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentSlide === index
-                  ? 'bg-white scale-125'
-                  : 'bg-white/40 hover:bg-white/70'
-              }`}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === index
+                ? 'bg-white scale-125'
+                : 'bg-white/40 hover:bg-white/70'
+                }`}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
             />
           ))}
-        </div>
-      </motion.div>
-
-      {/* Touch Scroll Hint for Mobile */}
-      <motion.div
-        className="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-[80] sm:hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-      >
-        <div className="text-white/70 text-xs font-light tracking-wider text-center">
-          <div className="flex flex-col items-center space-y-1">
-            <div className="flex items-center space-x-2">
-              <span>↑</span>
-              <span>SCROLL TO NAVIGATE</span>
-              <span>↓</span>
-            </div>
-            <div className="text-white/60 text-xs">
-              UP: Previous • DOWN: Next
-            </div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Keyboard Hint - Desktop Only */}
-      <motion.div
-        className="fixed bottom-6 sm:bottom-8 right-4 sm:right-6 lg:right-8 text-white/60 text-xs font-light tracking-wider z-[80] hidden sm:block"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 3 }}
-      >
-        <div className="flex flex-col items-end space-y-1">
-          <span>← → Navigate</span>
-          <span>Scroll to explore</span>
         </div>
       </motion.div>
     </>

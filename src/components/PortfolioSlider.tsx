@@ -3,7 +3,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useHorizontalSlider } from '@/hooks/useScrollSpy';
 import { getDynamicVariants, getDynamicTransition } from '@/lib/animations';
-import { scrollConfig } from '@/config/scrollConfig';
 import Navigation from './Navigation';
 import HeroSection from './HeroSection';
 import VerticalAboutSection from './VerticalAboutSection';
@@ -12,7 +11,6 @@ import SkillsSection from './SkillsSection';
 import ContactSection from './ContactSection';
 import TouchIndicator from './TouchIndicator';
 import ScrollIndicator from './ScrollIndicator';
-import ScrollDirectionIndicator from './ScrollDirectionIndicator';
 import PerformanceOptimizer from './PerformanceOptimizer';
 
 const slides = [
@@ -32,7 +30,7 @@ export default function PortfolioSlider() {
   const dynamicTransition = getDynamicTransition(currentSlideConfig.scrollDirection);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black">
+    <div className="relative w-full h-screen overflow-hidden bg-black px-4 sm:px-6 lg:px-8">
       {/* Performance Optimizer */}
       <PerformanceOptimizer />
 
@@ -54,12 +52,7 @@ export default function PortfolioSlider() {
         isLast={isLast}
       />
 
-      {/* Scroll Direction Indicator */}
-      <ScrollDirectionIndicator
-        scrollDirection={currentSlideConfig.scrollDirection}
-        currentSlide={currentSlide}
-        totalSlides={slides.length}
-      />
+
 
       {/* Slides Container */}
       <div className="relative w-full h-full z-10">
