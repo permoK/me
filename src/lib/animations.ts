@@ -162,3 +162,97 @@ export const foldDown = {
     transition: { duration: 0.6, ease: "easeOut" }
   }
 };
+
+// Professional loading screen animations
+export const loadingContainer = {
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut"
+    }
+  },
+  exit: {
+    opacity: 0,
+    scale: 1.05,
+    transition: {
+      duration: 1.2,
+      ease: [0.76, 0, 0.24, 1]
+    }
+  }
+};
+
+export const loadingNameContainer = {
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      staggerChildren: 0.08,
+      delayChildren: 0.5
+    }
+  }
+};
+
+export const loadingLetterReveal = {
+  initial: {
+    y: 120,
+    opacity: 0,
+    scale: 0.3,
+    rotateY: -90
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    rotateY: 0,
+    transition: {
+      duration: 1.2,
+      ease: [0.215, 0.61, 0.355, 1],
+      type: "spring",
+      damping: 12,
+      stiffness: 100
+    }
+  }
+};
+
+export const loadingSubtitle = {
+  initial: {
+    opacity: 0,
+    y: 30,
+    scale: 0.95
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 1.0,
+      ease: [0.215, 0.61, 0.355, 1],
+      delay: 2.2
+    }
+  }
+};
+
+export const loadingProgress = {
+  initial: {
+    scaleX: 0,
+    opacity: 0
+  },
+  animate: {
+    scaleX: 1,
+    opacity: 1,
+    transition: {
+      scaleX: {
+        duration: 2.5,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        delay: 1.8
+      },
+      opacity: {
+        duration: 0.5,
+        delay: 1.8
+      }
+    }
+  }
+};

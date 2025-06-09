@@ -153,3 +153,8 @@ a:focus {
   -ms-user-select: none;
   user-select: none;
 }
+
+/* Custom gradient utilities */
+.bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
