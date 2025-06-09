@@ -3,7 +3,11 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-export default function TouchIndicator() {
+interface TouchIndicatorProps {
+  scrollDirection?: 'horizontal' | 'vertical';
+}
+
+export default function TouchIndicator({ scrollDirection = 'vertical' }: TouchIndicatorProps) {
   const [showIndicator, setShowIndicator] = useState(true);
 
   useEffect(() => {
@@ -48,14 +52,28 @@ export default function TouchIndicator() {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
             <span className="text-2xl">☝️</span>
-            <span className="text-sm font-light tracking-wider text-center">SCROLL TO NAVIGATE</span>
+            <span className="text-sm font-light tracking-wider text-center">
+              {scrollDirection === 'horizontal' ? 'SWIPE TO NAVIGATE' : 'SCROLL TO NAVIGATE'}
+            </span>
           </motion.div>
-          <div className="flex items-center space-x-4 text-white/60 text-xs">
-            <span>↑</span>
-            <span>PREVIOUS</span>
-            <span>•</span>
-            <span>NEXT</span>
-            <span>↓</span>
+          <div className="flex items-center space-x-4 text-white/80 text-xs">
+            {scrollDirection === 'horizontal' ? (
+              <>
+                <span>←</span>
+                <span>PREVIOUS</span>
+                <span>•</span>
+                <span>NEXT</span>
+                <span>→</span>
+              </>
+            ) : (
+              <>
+                <span>↑</span>
+                <span>PREVIOUS</span>
+                <span>•</span>
+                <span>NEXT</span>
+                <span>↓</span>
+              </>
+            )}
           </div>
         </div>
       </motion.div>

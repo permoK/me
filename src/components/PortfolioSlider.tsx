@@ -2,27 +2,34 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useHorizontalSlider } from '@/hooks/useScrollSpy';
-import { slideVariants, slideTransition } from '@/lib/animations';
+import { getDynamicVariants, getDynamicTransition } from '@/lib/animations';
+import { scrollConfig } from '@/config/scrollConfig';
 import Navigation from './Navigation';
 import HeroSection from './HeroSection';
-import AboutSection from './AboutSection';
+import VerticalAboutSection from './VerticalAboutSection';
 import ProjectSection from './ProjectSection';
 import SkillsSection from './SkillsSection';
 import ContactSection from './ContactSection';
 import TouchIndicator from './TouchIndicator';
 import ScrollIndicator from './ScrollIndicator';
+import ScrollDirectionIndicator from './ScrollDirectionIndicator';
 import PerformanceOptimizer from './PerformanceOptimizer';
 
 const slides = [
-  { id: 'hero', component: HeroSection },
-  { id: 'about', component: AboutSection },
-  { id: 'work', component: ProjectSection },
-  { id: 'skills', component: SkillsSection },
-  { id: 'contact', component: ContactSection }
+  { id: 'hero', component: HeroSection, scrollDirection: 'horizontal' as const },
+  { id: 'about', component: VerticalAboutSection, scrollDirection: 'vertical' as const },
+  { id: 'work', component: ProjectSection, scrollDirection: 'horizontal' as const },
+  { id: 'skills', component: SkillsSection, scrollDirection: 'vertical' as const },
+  { id: 'contact', component: ContactSection, scrollDirection: 'horizontal' as const }
 ];
 
 export default function PortfolioSlider() {
   const { currentSlide, direction, goToSlide, isFirst, isLast } = useHorizontalSlider(slides.length);
+
+  // Get current slide configuration
+  const currentSlideConfig = slides[currentSlide];
+  const dynamicVariants = getDynamicVariants(currentSlideConfig.scrollDirection);
+  const dynamicTransition = getDynamicTransition(currentSlideConfig.scrollDirection);
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
@@ -37,7 +44,7 @@ export default function PortfolioSlider() {
       />
 
       {/* Touch Indicator for Mobile */}
-      <TouchIndicator />
+      <TouchIndicator scrollDirection={currentSlideConfig.scrollDirection} />
 
       {/* Mobile Scroll Indicator */}
       <ScrollIndicator
@@ -45,6 +52,13 @@ export default function PortfolioSlider() {
         totalSlides={slides.length}
         isFirst={isFirst}
         isLast={isLast}
+      />
+
+      {/* Scroll Direction Indicator */}
+      <ScrollDirectionIndicator
+        scrollDirection={currentSlideConfig.scrollDirection}
+        currentSlide={currentSlide}
+        totalSlides={slides.length}
       />
 
       {/* Slides Container */}
@@ -60,11 +74,11 @@ export default function PortfolioSlider() {
           <motion.div
             key={currentSlide}
             custom={direction}
-            variants={slideVariants}
+            variants={dynamicVariants}
             initial="enter"
             animate="center"
             exit="exit"
-            transition={slideTransition}
+            transition={dynamicTransition}
             className="absolute inset-0 w-full h-full z-10"
             style={{
               willChange: 'transform, opacity', // Optimize for animations

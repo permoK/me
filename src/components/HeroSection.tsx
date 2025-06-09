@@ -48,7 +48,7 @@ export default function HeroSection() {
           animate="animate"
           transition={{ delay: 0.5 }}
         >
-          <h2 className="text-lg sm:text-xl lg:text-2xl font-light tracking-widest text-gray-300 mb-2">
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-light tracking-widest text-gray-100 mb-2">
             {title}
           </h2>
         </motion.div>
@@ -60,7 +60,7 @@ export default function HeroSection() {
           animate="animate"
           transition={{ delay: 0.7 }}
         >
-          <h3 className="text-lg sm:text-xl lg:text-2xl font-light tracking-widest text-gray-300">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-light tracking-widest text-gray-100">
             {subtitle}
           </h3>
         </motion.div>
@@ -76,7 +76,7 @@ export default function HeroSection() {
 
       {/* Bottom text - Hidden on mobile */}
       <motion.div
-        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 text-sm font-light tracking-wider hidden sm:block"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 text-sm font-light tracking-wider hidden sm:block"
         variants={textReveal}
         initial="initial"
         animate="animate"
@@ -87,7 +87,7 @@ export default function HeroSection() {
 
       {/* Right side text - Hidden on mobile */}
       <motion.div
-        className="absolute right-4 sm:right-6 lg:right-8 top-1/2 transform -translate-y-1/2 text-white/40 text-xs font-light tracking-widest hidden lg:block"
+        className="absolute right-4 sm:right-6 lg:right-8 top-1/2 transform -translate-y-1/2 text-white/70 text-xs font-light tracking-widest hidden lg:block"
         style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
         variants={textReveal}
         initial="initial"

@@ -40,7 +40,7 @@ export default function Navigation({ currentSlide, totalSlides, onSlideChange }:
                   className={`relative text-sm font-light tracking-wider transition-all duration-300 ${
                     currentSlide === index
                       ? 'text-white'
-                      : 'text-white/60 hover:text-white/90'
+                      : 'text-white/80 hover:text-white'
                   }`}
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -63,10 +63,10 @@ export default function Navigation({ currentSlide, totalSlides, onSlideChange }:
 
             {/* Mobile Current Section Display */}
             <div className="lg:hidden flex items-center space-x-3">
-              <span className="text-white/60 text-sm font-light">
+              <span className="text-white/90 text-sm font-light">
                 {slideLabels[currentSlide].toUpperCase()}
               </span>
-              <div className="text-white/40 text-xs font-mono">
+              <div className="text-white/70 text-xs font-mono">
                 {String(currentSlide + 1).padStart(2, '0')}/{String(totalSlides).padStart(2, '0')}
               </div>
             </div>
@@ -92,12 +92,12 @@ export default function Navigation({ currentSlide, totalSlides, onSlideChange }:
           </div>
 
           {/* Current/Total Counter */}
-          <div className="text-white/60 text-xs font-mono tracking-wider">
+          <div className="text-white/80 text-xs font-mono tracking-wider">
             <div className="text-center">
               <div className="text-white text-sm">
                 {String(currentSlide + 1).padStart(2, '0')}
               </div>
-              <div className="text-white/40 text-xs">
+              <div className="text-white/70 text-xs">
                 {String(totalSlides).padStart(2, '0')}
               </div>
             </div>
@@ -136,14 +136,14 @@ export default function Navigation({ currentSlide, totalSlides, onSlideChange }:
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
       >
-        <div className="text-white/40 text-xs font-light tracking-wider text-center">
+        <div className="text-white/70 text-xs font-light tracking-wider text-center">
           <div className="flex flex-col items-center space-y-1">
             <div className="flex items-center space-x-2">
               <span>↑</span>
               <span>SCROLL TO NAVIGATE</span>
               <span>↓</span>
             </div>
-            <div className="text-white/30 text-xs">
+            <div className="text-white/60 text-xs">
               UP: Previous • DOWN: Next
             </div>
           </div>
@@ -152,7 +152,7 @@ export default function Navigation({ currentSlide, totalSlides, onSlideChange }:
 
       {/* Keyboard Hint - Desktop Only */}
       <motion.div
-        className="fixed bottom-6 sm:bottom-8 right-4 sm:right-6 lg:right-8 text-white/30 text-xs font-light tracking-wider z-[80] hidden sm:block"
+        className="fixed bottom-6 sm:bottom-8 right-4 sm:right-6 lg:right-8 text-white/60 text-xs font-light tracking-wider z-[80] hidden sm:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 3 }}

@@ -33,6 +33,26 @@ export default function PerformanceOptimizer() {
       if (window.screen && 'refreshRate' in window.screen) {
         document.documentElement.style.setProperty('--refresh-rate', `${(window.screen as any).refreshRate}Hz`);
       }
+
+      // Improve text rendering
+      document.body.style.textRendering = 'optimizeLegibility';
+      document.body.style.webkitFontSmoothing = 'antialiased';
+      document.body.style.mozOsxFontSmoothing = 'grayscale';
+
+      // Enhance contrast for better readability
+      const style = document.createElement('style');
+      style.textContent = `
+        .text-enhanced {
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Better contrast ratios */
+        .text-white\\/40 { color: rgba(255, 255, 255, 0.75) !important; }
+        .text-white\\/60 { color: rgba(255, 255, 255, 0.85) !important; }
+        .text-gray-300 { color: rgb(229, 231, 235) !important; }
+        .text-gray-400 { color: rgb(209, 213, 219) !important; }
+      `;
+      document.head.appendChild(style);
     };
 
     // Apply optimizations

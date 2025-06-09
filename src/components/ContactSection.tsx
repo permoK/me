@@ -47,8 +47,8 @@ export default function ContactSection() {
             <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
               Let's Work Together
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              I'm always interested in new opportunities and creative collaborations. 
+            <p className="text-gray-200 text-lg leading-relaxed">
+              I'm always interested in new opportunities and creative collaborations.
               Let's discuss how we can bring your ideas to life.
             </p>
           </motion.div>
@@ -64,7 +64,7 @@ export default function ContactSection() {
               <motion.a
                 key={contact.text}
                 href={contact.href}
-                className="flex items-center space-x-4 text-gray-300 hover:text-white transition-colors group"
+                className="flex items-center space-x-4 text-gray-100 hover:text-white transition-colors group"
                 variants={fadeInUp}
                 transition={{ delay: 0.4 + index * 0.1 }}
                 whileHover={{ x: 10 }}
@@ -93,7 +93,7 @@ export default function ContactSection() {
               <motion.a
                 key={social.label}
                 href={social.href}
-                className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-colors"
+                className="w-12 h-12 border border-white/30 rounded-full flex items-center justify-center text-white/80 hover:text-white hover:border-white/60 transition-colors"
                 variants={scaleIn}
                 transition={{ delay: 0.8 + index * 0.1 }}
                 whileHover={{ scale: 1.1, y: -2 }}
@@ -166,7 +166,7 @@ export default function ContactSection() {
 
       {/* Copyright */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/40 text-xs font-light tracking-widest"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70 text-xs font-light tracking-widest"
         variants={fadeInUp}
         initial="initial"
         animate="animate"

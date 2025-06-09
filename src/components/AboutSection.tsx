@@ -37,7 +37,7 @@ export default function AboutSection() {
           </motion.div>
 
           <motion.div
-            className="space-y-4 sm:space-y-6 text-gray-300 text-base sm:text-lg leading-relaxed"
+            className="space-y-4 sm:space-y-6 text-gray-100 text-base sm:text-lg leading-relaxed"
             variants={staggerText}
             initial="initial"
             animate="animate"
@@ -71,7 +71,7 @@ export default function AboutSection() {
             {['React', 'Three.js', 'WebGL', 'Node.js', 'TypeScript', 'GSAP'].map((skill, index) => (
               <motion.span
                 key={skill}
-                className="px-3 sm:px-4 py-1 sm:py-2 border border-white/20 text-white/80 text-xs sm:text-sm font-light tracking-wide hover:border-white/40 transition-colors"
+                className="px-3 sm:px-4 py-1 sm:py-2 border border-white/30 text-white text-xs sm:text-sm font-light tracking-wide hover:border-white/60 transition-colors"
                 variants={fadeInUp}
                 transition={{ delay: 1 + index * 0.1 }}
                 whileHover={{ scale: 1.05 }}

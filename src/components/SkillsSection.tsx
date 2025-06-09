@@ -30,7 +30,7 @@ export default function SkillsSection() {
             <h2 className="text-3xl md:text-4xl font-light text-white mb-2">
               Technical Skills
             </h2>
-            <p className="text-gray-400 font-light">
+            <p className="text-gray-200 font-light">
               Tools & Technologies I work with
             </p>
           </motion.div>
@@ -52,7 +52,7 @@ export default function SkillsSection() {
                   <span className="text-white font-light tracking-wide">
                     {skill.name}
                   </span>
-                  <span className="text-gray-500 text-sm font-mono">
+                  <span className="text-gray-300 text-sm font-mono">
                     {skill.level}%
                   </span>
                 </div>
@@ -94,12 +94,12 @@ export default function SkillsSection() {
             variants={fadeInUp}
             transition={{ delay: 0.8 }}
           >
-            <div className="text-gray-400 font-light">
+            <div className="text-gray-200 font-light">
               <p className="mb-2">Years of Experience</p>
               <p className="text-2xl text-white font-light">5+</p>
             </div>
 
-            <div className="text-gray-400 font-light">
+            <div className="text-gray-200 font-light">
               <p className="mb-2">Projects Completed</p>
               <p className="text-2xl text-white font-light">50+</p>
             </div>

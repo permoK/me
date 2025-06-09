@@ -1,29 +1,54 @@
-// Animation variants for smooth sliding portfolio
-export const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 1000 : -1000,
-    opacity: 0,
-    scale: 0.95
-  }),
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-    scale: 1
-  },
-  exit: (direction: number) => ({
-    zIndex: 0,
-    x: direction < 0 ? 1000 : -1000,
-    opacity: 0,
-    scale: 0.95
-  })
+// Dynamic animation variants that adapt to scroll direction
+export const getDynamicVariants = (scrollDirection: 'horizontal' | 'vertical') => {
+  if (scrollDirection === 'vertical') {
+    return {
+      enter: (direction: number) => ({
+        y: direction > 0 ? 1000 : -1000,
+        opacity: 0,
+        scale: 0.98
+      }),
+      center: {
+        zIndex: 1,
+        y: 0,
+        opacity: 1,
+        scale: 1
+      },
+      exit: (direction: number) => ({
+        zIndex: 0,
+        y: direction < 0 ? 1000 : -1000,
+        opacity: 0,
+        scale: 0.98
+      })
+    };
+  }
+
+  // Default horizontal variants
+  return {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.95
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.95
+    })
+  };
 };
 
-export const slideTransition = {
+export const getDynamicTransition = (scrollDirection: 'horizontal' | 'vertical') => ({
   type: "tween",
-  ease: [0.25, 0.46, 0.45, 0.94], // Custom cubic-bezier for smooth easing
-  duration: 0.4 // Faster transition
-};
+  ease: [0.25, 0.46, 0.45, 0.94],
+  duration: scrollDirection === 'vertical' ? 0.6 : 0.4 // Longer for vertical
+});
 
 // Text animations
 export const textReveal = {

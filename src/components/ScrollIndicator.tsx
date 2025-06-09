@@ -20,7 +20,7 @@ export default function ScrollIndicator({ currentSlide, totalSlides, isFirst, is
       <div className="flex flex-col items-center space-y-3">
         {/* Up Arrow */}
         <motion.div
-          className={`transition-opacity duration-300 ${isFirst ? 'opacity-30' : 'opacity-70'}`}
+          className={`transition-opacity duration-300 ${isFirst ? 'opacity-40' : 'opacity-80'}`}
           animate={!isFirst ? { y: [0, -3, 0] } : {}}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -56,7 +56,7 @@ export default function ScrollIndicator({ currentSlide, totalSlides, isFirst, is
 
         {/* Down Arrow */}
         <motion.div
-          className={`transition-opacity duration-300 ${isLast ? 'opacity-30' : 'opacity-70'}`}
+          className={`transition-opacity duration-300 ${isLast ? 'opacity-40' : 'opacity-80'}`}
           animate={!isLast ? { y: [0, 3, 0] } : {}}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >

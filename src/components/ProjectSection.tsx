@@ -47,7 +47,7 @@ export default function ProjectSection() {
             WORK
           </motion.h1>
           <motion.p
-            className="text-lg sm:text-xl text-gray-400 font-light tracking-wide"
+            className="text-lg sm:text-xl text-gray-200 font-light tracking-wide"
             variants={fadeInUp}
             transition={{ delay: 0.3 }}
           >
@@ -74,20 +74,20 @@ export default function ProjectSection() {
                 <div className="flex-1">
                   <div className="flex items-baseline space-x-6 mb-2">
                     <motion.h3
-                      className="text-3xl md:text-4xl font-light text-white group-hover:text-gray-300 transition-colors"
+                      className="text-3xl md:text-4xl font-light text-white group-hover:text-gray-200 transition-colors"
                       variants={wipeLeft}
                     >
                       {project.title}
                     </motion.h3>
-                    <span className="text-sm text-gray-500 font-mono">
+                    <span className="text-sm text-gray-300 font-mono">
                       {project.year}
                     </span>
                   </div>
                   <div className="flex items-center space-x-8">
-                    <p className="text-gray-400 font-light">
+                    <p className="text-gray-200 font-light">
                       {project.subtitle}
                     </p>
-                    <span className="text-xs text-gray-600 tracking-widest uppercase">
+                    <span className="text-xs text-gray-400 tracking-widest uppercase">
                       {project.category}
                     </span>
                   </div>
@@ -118,7 +118,7 @@ export default function ProjectSection() {
           transition={{ delay: 1.2 }}
         >
           <motion.button
-            className="text-white/60 hover:text-white font-light tracking-widest text-sm border-b border-white/20 hover:border-white/60 pb-1 transition-colors"
+            className="text-white/80 hover:text-white font-light tracking-widest text-sm border-b border-white/30 hover:border-white/80 pb-1 transition-colors"
             whileHover={{ y: -2 }}
           >
             VIEW ALL PROJECTS
