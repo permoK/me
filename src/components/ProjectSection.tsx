@@ -30,7 +30,7 @@ const projects = [
 
 export default function ProjectSection() {
   return (
-    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pl-24">
+    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pt-20">
       <div className="container mx-auto px-8">
 
         {/* Header */}

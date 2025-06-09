@@ -51,38 +51,7 @@ export default function PortfolioSlider() {
         </AnimatePresence>
       </div>
 
-      {/* Keyboard navigation hint */}
-      <motion.div
-        className="fixed bottom-8 right-8 text-white/40 text-xs font-light tracking-wider z-[90]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 3 }}
-      >
-        <div className="flex flex-col items-end space-y-1">
-          <span>← → Navigate</span>
-          <span>Scroll to change slides</span>
-        </div>
-      </motion.div>
 
-      {/* Progress indicator */}
-      <motion.div
-        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-[90]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-      >
-        {slides.map((_, index) => (
-          <motion.div
-            key={index}
-            className={`w-8 h-1 rounded-full transition-colors duration-300 ${
-              index === currentSlide ? 'bg-white' : 'bg-white/20'
-            }`}
-            whileHover={{ scale: 1.2 }}
-            onClick={() => goToSlide(index)}
-            style={{ cursor: 'pointer' }}
-          />
-        ))}
-      </motion.div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ export default function HeroSection() {
   const subtitle = "& DIGITAL ARTIST";
 
   return (
-    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pl-24">
+    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pt-20">
       {/* Background elements */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"

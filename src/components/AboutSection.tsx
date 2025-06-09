@@ -5,7 +5,7 @@ import { textReveal, fadeInUp, staggerText, letterReveal } from '@/lib/animation
 
 export default function AboutSection() {
   return (
-    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pl-24">
+    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pt-20">
       <div className="container mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
         {/* Left side - Large "ABOUT" text */}
