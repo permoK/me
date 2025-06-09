@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Video Analysis</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        video {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border: 2px solid #333;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #555;
+        }
+        .info {
+            margin: 20px 0;
+            padding: 20px;
+            background: #111;
+            border-radius: 10px;
+        }
+        .timestamp {
+            color: #0ff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Portfolio Video Analysis</h1>
+        
+        <video id="portfolioVideo" controls>
+            <source src="public/portfolioInspiration.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="controls">
+            <button onclick="stepBackward()">⏪ -5s</button>
+            <button onclick="stepFrame(-1)">⏮ -Frame</button>
+            <button onclick="playPause()">⏯ Play/Pause</button>
+            <button onclick="stepFrame(1)">⏭ +Frame</button>
+            <button onclick="stepForward()">⏩ +5s</button>
+            <button onclick="captureFrame()">📸 Capture Frame</button>
+        </div>
+        
+        <div class="info">
+            <p><span class="timestamp">Current Time:</span> <span id="currentTime">0:00</span></p>
+            <p><span class="timestamp">Duration:</span> <span id="duration">0:00</span></p>
+            <p><span class="timestamp">Frame Rate:</span> <span id="frameRate">30 fps (estimated)</span></p>
+        </div>
+        
+        <div id="analysis">
+            <h2>Design Analysis Notes</h2>
+            <div id="notes">
+                <p>Use the video controls above to analyze the portfolio design frame by frame.</p>
+                <p>Take notes on:</p>
+                <ul>
+                    <li>Layout structure and sections</li>
+                    <li>Color scheme and typography</li>
+                    <li>Animation types and timing</li>
+                    <li>Navigation style</li>
+                    <li>Content organization</li>
+                    <li>Responsive behavior</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('portfolioVideo');
+        const currentTimeSpan = document.getElementById('currentTime');
+        const durationSpan = document.getElementById('duration');
+        
+        video.addEventListener('loadedmetadata', function() {
+            durationSpan.textContent = formatTime(video.duration);
+        });
+        
+        video.addEventListener('timeupdate', function() {
+            currentTimeSpan.textContent = formatTime(video.currentTime);
+        });
+        
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        function playPause() {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+        
+        function stepForward() {
+            video.currentTime += 5;
+        }
+        
+        function stepBackward() {
+            video.currentTime -= 5;
+        }
+        
+        function stepFrame(direction) {
+            // Approximate frame stepping (assuming 30fps)
+            video.currentTime += direction * (1/30);
+        }
+        
+        function captureFrame() {
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0);
+            
+            // Create download link
+            const link = document.createElement('a');
+            link.download = `frame-${formatTime(video.currentTime)}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>
