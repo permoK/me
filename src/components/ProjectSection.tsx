@@ -30,24 +30,24 @@ const projects = [
 
 export default function ProjectSection() {
   return (
-    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pt-20">
-      <div className="container mx-auto px-8">
+    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pt-16 sm:pt-20 pb-20 sm:pb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <motion.div
-          className="mb-16"
+          className="mb-8 sm:mb-12 lg:mb-16"
           variants={staggerText}
           initial="initial"
           animate="animate"
         >
           <motion.h1
-            className="text-8xl md:text-9xl font-bold text-white/10 leading-none mb-4"
+            className="text-6xl sm:text-8xl lg:text-9xl font-bold text-white/10 leading-none mb-2 sm:mb-4"
             variants={textReveal}
           >
             WORK
           </motion.h1>
           <motion.p
-            className="text-xl text-gray-400 font-light tracking-wide"
+            className="text-lg sm:text-xl text-gray-400 font-light tracking-wide"
             variants={fadeInUp}
             transition={{ delay: 0.3 }}
           >

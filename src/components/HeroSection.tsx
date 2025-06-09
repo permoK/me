@@ -9,7 +9,7 @@ export default function HeroSection() {
   const subtitle = "& DIGITAL ARTIST";
 
   return (
-    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pt-20">
+    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pt-16 sm:pt-20 pb-20 sm:pb-8">
       {/* Background elements */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"
@@ -19,15 +19,15 @@ export default function HeroSection() {
       />
 
       {/* Main content */}
-      <div className="relative z-10 text-center text-white">
+      <div className="relative z-10 text-center text-white px-4 sm:px-6">
         {/* Main name */}
         <motion.div
-          className="mb-4"
+          className="mb-4 sm:mb-6"
           variants={staggerText}
           initial="initial"
           animate="animate"
         >
-          <motion.h1 className="text-6xl md:text-8xl font-bold tracking-wider">
+          <motion.h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold tracking-wider">
             {name.split('').map((letter, index) => (
               <motion.span
                 key={index}
@@ -48,7 +48,7 @@ export default function HeroSection() {
           animate="animate"
           transition={{ delay: 0.5 }}
         >
-          <h2 className="text-xl md:text-2xl font-light tracking-widest text-gray-300 mb-2">
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-light tracking-widest text-gray-300 mb-2">
             {title}
           </h2>
         </motion.div>
@@ -60,23 +60,23 @@ export default function HeroSection() {
           animate="animate"
           transition={{ delay: 0.7 }}
         >
-          <h3 className="text-xl md:text-2xl font-light tracking-widest text-gray-300">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-light tracking-widest text-gray-300">
             {subtitle}
           </h3>
         </motion.div>
 
         {/* Decorative line */}
         <motion.div
-          className="w-24 h-px bg-white mx-auto mt-8"
+          className="w-16 sm:w-24 h-px bg-white mx-auto mt-6 sm:mt-8"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
         />
       </div>
 
-      {/* Bottom text */}
+      {/* Bottom text - Hidden on mobile */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 text-sm font-light tracking-wider"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 text-sm font-light tracking-wider hidden sm:block"
         variants={textReveal}
         initial="initial"
         animate="animate"
@@ -85,9 +85,9 @@ export default function HeroSection() {
         SCROLL TO EXPLORE
       </motion.div>
 
-      {/* Right side text */}
+      {/* Right side text - Hidden on mobile */}
       <motion.div
-        className="absolute right-8 top-1/2 transform -translate-y-1/2 text-white/40 text-xs font-light tracking-widest"
+        className="absolute right-4 sm:right-6 lg:right-8 top-1/2 transform -translate-y-1/2 text-white/40 text-xs font-light tracking-widest hidden lg:block"
         style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
         variants={textReveal}
         initial="initial"

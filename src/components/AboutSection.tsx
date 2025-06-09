@@ -5,18 +5,18 @@ import { textReveal, fadeInUp, staggerText, letterReveal } from '@/lib/animation
 
 export default function AboutSection() {
   return (
-    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pt-20">
-      <div className="container mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pt-16 sm:pt-20 pb-20 sm:pb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
         {/* Left side - Large "ABOUT" text */}
         <motion.div
-          className="flex flex-col justify-center"
+          className="flex flex-col justify-center order-2 lg:order-1"
           variants={staggerText}
           initial="initial"
           animate="animate"
         >
           <motion.h1
-            className="text-8xl md:text-9xl font-bold text-white/10 leading-none"
+            className="text-6xl sm:text-8xl lg:text-9xl font-bold text-white/10 leading-none"
             variants={textReveal}
           >
             ABOUT
@@ -25,19 +25,19 @@ export default function AboutSection() {
 
         {/* Right side - Content */}
         <motion.div
-          className="flex flex-col justify-center space-y-8"
+          className="flex flex-col justify-center space-y-6 sm:space-y-8 order-1 lg:order-2"
           variants={staggerText}
           initial="initial"
           animate="animate"
         >
           <motion.div variants={fadeInUp} transition={{ delay: 0.2 }}>
-            <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-4 sm:mb-6">
               Creative Developer
             </h2>
           </motion.div>
 
           <motion.div
-            className="space-y-6 text-gray-300 text-lg leading-relaxed"
+            className="space-y-4 sm:space-y-6 text-gray-300 text-base sm:text-lg leading-relaxed"
             variants={staggerText}
             initial="initial"
             animate="animate"
@@ -54,7 +54,7 @@ export default function AboutSection() {
               and engage users on an emotional level.
             </motion.p>
 
-            <motion.p variants={fadeInUp} transition={{ delay: 0.8 }}>
+            <motion.p variants={fadeInUp} transition={{ delay: 0.8 }} className="hidden sm:block">
               When I'm not coding, you'll find me exploring new creative mediums,
               experimenting with generative art, or collaborating with other
               creatives to push the boundaries of what's possible on the web.
@@ -63,7 +63,7 @@ export default function AboutSection() {
 
           {/* Skills tags */}
           <motion.div
-            className="flex flex-wrap gap-3 mt-8"
+            className="flex flex-wrap gap-2 sm:gap-3 mt-6 sm:mt-8"
             variants={staggerText}
             initial="initial"
             animate="animate"
@@ -71,7 +71,7 @@ export default function AboutSection() {
             {['React', 'Three.js', 'WebGL', 'Node.js', 'TypeScript', 'GSAP'].map((skill, index) => (
               <motion.span
                 key={skill}
-                className="px-4 py-2 border border-white/20 text-white/80 text-sm font-light tracking-wide hover:border-white/40 transition-colors"
+                className="px-3 sm:px-4 py-1 sm:py-2 border border-white/20 text-white/80 text-xs sm:text-sm font-light tracking-wide hover:border-white/40 transition-colors"
                 variants={fadeInUp}
                 transition={{ delay: 1 + index * 0.1 }}
                 whileHover={{ scale: 1.05 }}

@@ -18,8 +18,8 @@ const contactInfo = [
 
 export default function ContactSection() {
   return (
-    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pt-20">
-      <div className="container mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden pt-16 sm:pt-20 pb-20 sm:pb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         
         {/* Left side - Large "CONTACT" text */}
         <motion.div

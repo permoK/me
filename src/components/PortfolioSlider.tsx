@@ -9,6 +9,9 @@ import AboutSection from './AboutSection';
 import ProjectSection from './ProjectSection';
 import SkillsSection from './SkillsSection';
 import ContactSection from './ContactSection';
+import TouchIndicator from './TouchIndicator';
+import ScrollIndicator from './ScrollIndicator';
+import PerformanceOptimizer from './PerformanceOptimizer';
 
 const slides = [
   { id: 'hero', component: HeroSection },
@@ -19,20 +22,41 @@ const slides = [
 ];
 
 export default function PortfolioSlider() {
-  const { currentSlide, direction, goToSlide } = useHorizontalSlider(slides.length);
+  const { currentSlide, direction, goToSlide, isFirst, isLast } = useHorizontalSlider(slides.length);
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
+      {/* Performance Optimizer */}
+      <PerformanceOptimizer />
+
       {/* Navigation */}
-      <Navigation 
+      <Navigation
         currentSlide={currentSlide}
         totalSlides={slides.length}
         onSlideChange={goToSlide}
       />
 
+      {/* Touch Indicator for Mobile */}
+      <TouchIndicator />
+
+      {/* Mobile Scroll Indicator */}
+      <ScrollIndicator
+        currentSlide={currentSlide}
+        totalSlides={slides.length}
+        isFirst={isFirst}
+        isLast={isLast}
+      />
+
       {/* Slides Container */}
       <div className="relative w-full h-full z-10">
-        <AnimatePresence initial={false} custom={direction} mode="wait">
+        <AnimatePresence
+          initial={false}
+          custom={direction}
+          mode="popLayout"
+          onExitComplete={() => {
+            // Optional: Add any cleanup after transition
+          }}
+        >
           <motion.div
             key={currentSlide}
             custom={direction}
@@ -42,6 +66,9 @@ export default function PortfolioSlider() {
             exit="exit"
             transition={slideTransition}
             className="absolute inset-0 w-full h-full z-10"
+            style={{
+              willChange: 'transform, opacity', // Optimize for animations
+            }}
           >
             {(() => {
               const CurrentSlideComponent = slides[currentSlide].component;
